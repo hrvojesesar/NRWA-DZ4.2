@@ -20,7 +20,7 @@
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
+                <a class="nav-link" href="{{ route('territory.index') }}">Territories</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products.index') }}">Products</a>
