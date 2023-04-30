@@ -31,7 +31,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
             <li class="nav-item">
@@ -49,7 +49,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee.index') }}">Employees</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('customer_customer_demos.index') }}">Customer Customer Demo</a>
             </li>
     </div>
@@ -58,10 +58,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Customer Demographic List</h2>
+                <h2>Customer Customer Demos List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('customerdemographic.create') }}">Add new Customer Demographics</a>
+                <a class="btn btn-primary" href="{{ route('customer_customer_demos.create') }}">Add new Category</a>
             </div>
         </div>
     </div>
@@ -73,19 +73,19 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Customer Demographics ID</th>
-            <th>Customer Description</th>
+            <th width="80px">CustomerID</th>
+            <th width="230px">CustomerTypeID</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($customerdemographics as $customerdemographic)
+        @foreach ($customerCustomerDemos as $customerCustomerDemo)
             <tr>
-                <td>{{ $customerdemographic->CustomerTypeID }}</td>
-                <td>{{ $customerdemographic->CustomerDesc }}</td>
+                <td>{{$customerCustomerDemo->CustomerID }}</td>
+                <td>{{ $customerCustomerDemo->CustomerTypeID }}</td>
                 <td>
-                    <form action="{{ route('customerdemographic.destroy',$customerdemographic->CustomerTypeID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('customerdemographic.edit',$customerdemographic->CustomerTypeID) }}">Edit</a>
+                    <form action="{{ route('customer_customer_demos.destroy',$customerCustomerDemo->CustomerID) }}" method="Post">
+                        <a class="btn btn-primary"href="{{ route('customer_customer_demos.edit',$customerCustomerDemo->CustomerID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
