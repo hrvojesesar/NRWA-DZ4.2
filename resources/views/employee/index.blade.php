@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
             <li class="nav-item">
@@ -46,7 +46,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('orderDetails.index') }}">Order Details</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('employee.index') }}">Employees</a>
             </li>
     </div>
