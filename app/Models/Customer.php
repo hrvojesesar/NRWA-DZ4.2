@@ -46,9 +46,9 @@ class Customer extends Model
         return $this->hasMany(Order::class, 'CustomerID', 'CustomerID');
     }
 
-    public function customerdemographics()
+    public function customerCustomerDemos()
     {
-        return $this->belongsToMany(CustomerDemographic::class, 'customer_customer_demo', 'CustomerID', 'CustomerTypeID');
+        return $this->hasMany(CustomerCustomerDemo::class, 'CustomerID', 'CustomerID');
     }
 
     use HasFactory;

@@ -18,12 +18,10 @@ class Shipper extends Model
     ];
 
 
-    /*public function orders()
+    public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'ShipVia', 'ShipperID');
     }
-
-    */
     	
 
     use HasFactory;
