@@ -13,17 +13,17 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('territory.index') }}">Territories</a>
+                <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('products.index') }}">Product</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
@@ -34,7 +34,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
-            <li class="new-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
             </li>
             <li class="nav-item">
@@ -52,7 +52,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customer_customer_demos.index') }}">Customer Customer Demo</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
             </li>
     </div>
@@ -61,10 +61,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Products List</h2>
+                <h2>Employee Territories List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('products.create') }}">Add new Product</a>
+                <a class="btn btn-primary" href="{{ route('employee_territories.create') }}">Add new Category</a>
             </div>
         </div>
     </div>
@@ -76,35 +76,19 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Supplier ID</th>
-            <th>Category ID</th>
-            <th>Quantity Per Unit</th>
-            <th>Unit Price</th>
-            <th>Units In Stock</th>
-            <th>Units On Order</th>
-            <th>Reorder Level</th>
-            <th>Discontinued</th>
+            <th width="230px">EmployeeID</th>
+            <th width="230px">TerritoryID</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($products as $product)
+        @foreach ($employeeTerritories as $employeeTerritory)
             <tr>
-                <td>{{ $product->ProductID }}</td>
-                <td>{{ $product->ProductName }}</td>
-                <td>{{ $product->SupplierID }}</td>
-                <td>{{ $product->CategoryID }}</td>
-                <td>{{ $product->QuantityPerUnit }}</td>
-                <td>{{ $product->UnitPrice }}</td>
-                <td>{{ $product->UnitsInStock }}</td>
-                <td>{{ $product->UnitsOnOrder }}</td>
-                <td>{{ $product->ReorderLevel }}</td>
-                <td>{{ $product->Discontinued }}</td>
+                <td>{{ $employeeTerritory->EmployeeID }}</td>
+                <td>{{ $employeeTerritory->TerritoryID }}</td>
                 <td>
-                    <form action="{{ route('products.destroy',$product->ProductID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('products.edit',$product->ProductID) }}">Edit</a>
+                    <form action="{{ route('employee_territories.destroy', $employeeTerritory->EmployeeID) }}" method="Post">
+                        <a class="btn btn-primary"href="{{ route('employee_territories.edit', $employeeTerritory->EmployeeID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
