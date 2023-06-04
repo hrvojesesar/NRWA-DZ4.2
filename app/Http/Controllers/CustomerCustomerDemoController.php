@@ -34,6 +34,7 @@ class CustomerCustomerDemoController extends Controller
         $request->validate([
             'CustomerID' => 'required',
             'CustomerTypeID' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         CustomerCustomerDemo::create($request->all());

@@ -30,6 +30,7 @@ class Employee extends Model
         'ReportsTo',
         'PhotoPath',
         'Salary',
+        'user_id',
     ];
 
     public $timestamps = false;

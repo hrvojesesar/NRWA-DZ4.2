@@ -14,7 +14,8 @@ class Shipper extends Model
     protected $fillable = [
         'ShipperID',
         'CompanyName',
-        'Phone'
+        'Phone',
+        'user_id',
     ];
 
 
@@ -22,7 +23,7 @@ class Shipper extends Model
     {
         return $this->hasMany(Order::class, 'ShipVia', 'ShipperID');
     }
-    	
+
 
     use HasFactory;
 

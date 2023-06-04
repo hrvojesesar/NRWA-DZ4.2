@@ -22,7 +22,8 @@ class Supplier extends Model
         'Country',
         'Phone',
         'Fax',
-        'HomePage'
+        'HomePage',
+        'user_id',
     ];
 
     protected $casts = [

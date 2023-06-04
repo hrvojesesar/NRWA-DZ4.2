@@ -18,6 +18,7 @@ class Product extends Model
         'UnitsOnOrder',
         'ReorderLevel',
         'Discontinued',
+        'CategoryID',
     ];
 
     public $timestamps = false;

@@ -32,7 +32,8 @@ class RegionController extends Controller
     {
           $request->validate([
             'RegionID' => 'required',
-            'RegionDescription' => 'required'
+            'RegionDescription' => 'required',
+              'user_id' => auth()->user()->id,
         ]);
 
           Region::create($request->all());

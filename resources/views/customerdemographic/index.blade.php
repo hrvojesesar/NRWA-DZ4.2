@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
@@ -31,10 +31,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
-            <li class="nav-item">
+            <li class="new-item">
                 <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
             </li>
             <li class="nav-item">
@@ -55,6 +55,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">
@@ -63,9 +66,11 @@
             <div class="pull-left">
                 <h2>Customer Demographic List</h2>
             </div>
+            @if(auth()->check() && auth()->user()->hasAnyRole(['AdminRole', 'SuperAdminRole']))
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('customerdemographic.create') }}">Add new Customer Demographics</a>
             </div>
+            @endif
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -78,7 +83,9 @@
         <tr>
             <th>Customer Demographics ID</th>
             <th>Customer Description</th>
+            @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
             <th width="230px">Action</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -86,6 +93,7 @@
             <tr>
                 <td>{{ $customerdemographic->CustomerTypeID }}</td>
                 <td>{{ $customerdemographic->CustomerDesc }}</td>
+                @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('customerdemographic.destroy',$customerdemographic->CustomerTypeID) }}" method="Post">
                         <a class="btn btn-primary"href="{{ route('customerdemographic.edit',$customerdemographic->CustomerTypeID) }}">Edit</a>
@@ -94,6 +102,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                    @endif
             </tr>
         @endforeach
         </tbody>

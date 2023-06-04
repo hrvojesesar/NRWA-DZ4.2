@@ -44,6 +44,7 @@ class CustomerController extends Controller
           'Country' => 'required',
           'Phone' => 'required',
           'Fax' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Customer::create($request->all());

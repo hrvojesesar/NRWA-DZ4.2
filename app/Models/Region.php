@@ -15,7 +15,8 @@ class Region extends Model
 
     protected $fillable = [
         'RegionID',
-        'RegionDescription'
+        'RegionDescription',
+        'user_id',
     ];
 
 

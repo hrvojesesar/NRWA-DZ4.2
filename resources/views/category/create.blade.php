@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,6 +59,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
+            </li>
+
     </div>
 </nav>
 <div class="container mt-2">
@@ -114,3 +119,4 @@
 </body>
 
 </html>
+

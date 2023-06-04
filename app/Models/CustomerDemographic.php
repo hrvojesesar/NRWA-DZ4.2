@@ -15,14 +15,15 @@ class CustomerDemographic extends Model
 
     protected $fillable = [
         'CustomerTypeID',
-        'CustomerDesc'
+        'CustomerDesc',
+        'user_id',
     ];
 
 
     public function customerCustomerDemos()
     {
         return $this->hasMany(CustomerCustomerDemo::class, 'CustomerTypeID', 'CustomerTypeID');
-    }   
+    }
 
     use HasFactory;
 }

@@ -33,6 +33,7 @@ class CategoryController extends Controller
         $request->validate([
             'CategoryID' => 'required',
             'CategoryName' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Category::create($request->all());

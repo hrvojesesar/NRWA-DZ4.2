@@ -19,7 +19,8 @@ class OrderDetail extends Model
         'ProductID',
         'UnitPrice',
         'Quantity',
-        'Discount'
+        'Discount',
+        'user_id',
     ];
 
     protected $casts = [

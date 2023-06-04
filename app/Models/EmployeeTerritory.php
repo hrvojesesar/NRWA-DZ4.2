@@ -14,6 +14,7 @@ class EmployeeTerritory extends Model
     protected $fillable = [
         'EmployeeID',
         'TerritoryID',
+        'user_id',
     ];
 
     protected $casts = [

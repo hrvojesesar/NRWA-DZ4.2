@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +17,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
+                <a class="nav-link" href="{{ route('territory.index') }}">Territories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">Product</a>
+                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
@@ -34,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
-            <li class="nav-item">
+            <li class="new-item">
                 <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
             </li>
             <li class="nav-item">
@@ -52,20 +53,26 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customer_customer_demos.index') }}">Customer Customer Demo</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
             </li>
     </div>
 </nav>
+
 <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Employee Territories List</h2>
             </div>
+            @if(auth()->check() && auth()->user()->hasAnyRole(['AdminRole', 'SuperAdminRole']))
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('employee_territories.create') }}">Add new Category</a>
             </div>
+            @endif
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -78,7 +85,9 @@
         <tr>
             <th width="230px">EmployeeID</th>
             <th width="230px">TerritoryID</th>
+            @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
             <th width="230px">Action</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -86,7 +95,9 @@
             <tr>
                 <td>{{ $employeeTerritory->EmployeeID }}</td>
                 <td>{{ $employeeTerritory->TerritoryID }}</td>
+                @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
+
                     <form action="{{ route('employee_territories.destroy', $employeeTerritory->EmployeeID) }}" method="Post">
                         <a class="btn btn-primary"href="{{ route('employee_territories.edit', $employeeTerritory->EmployeeID) }}">Edit</a>
                         @csrf
@@ -94,6 +105,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                    @endif
             </tr>
         @endforeach
         </tbody>
@@ -101,3 +113,4 @@
 </div>
 </body>
 </html>
+

@@ -14,7 +14,8 @@ class Territory extends Model
     protected $fillable = [
         'TerritoryID',
         'TerritoryDescription',
-        'RegionID'
+        'RegionID',
+        'user_id',
     ];
 
     protected $casts = [

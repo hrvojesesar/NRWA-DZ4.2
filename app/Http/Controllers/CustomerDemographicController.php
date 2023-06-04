@@ -32,7 +32,8 @@ class CustomerDemographicController extends Controller
     {
           $request->validate([
             'CustomerTypeID' => 'required',
-            'CustomerDesc' => 'required'
+            'CustomerDesc' => 'required',
+              'user_id' => auth()->user()->id,
         ]);
 
           CustomerDemographic::create($request->all());

@@ -31,7 +31,8 @@ class SupplierController extends Controller
     {
         $request->validate([
             'SupplierID' => 'required',
-            'CompanyName' => 'required'
+            'CompanyName' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Supplier::create($request->all());

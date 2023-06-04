@@ -16,10 +16,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products.index') }}">Products</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
             <li class="nav-item">
@@ -57,6 +57,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
             </li>
     </div>
 </nav>

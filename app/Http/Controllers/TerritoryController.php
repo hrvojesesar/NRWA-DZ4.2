@@ -34,6 +34,7 @@ class TerritoryController extends Controller
             'TerritoryID' => 'required',
             'TerritoryDescription' => 'required',
             'RegionID' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Territory::create($request->all());

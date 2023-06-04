@@ -36,7 +36,8 @@ class OrderController extends Controller
             'ShipCity' => 'required',
             'ShipRegion' => 'required',
             'ShipPostalCode' => 'required',
-            'ShipCountry' => 'required'
+            'ShipCountry' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Order::create($request->all());

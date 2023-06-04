@@ -37,6 +37,7 @@ class ProductController extends Controller
             'UnitsOnOrder' => 'required',
             'ReorderLevel' => 'required',
             'Discontinued' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Product::create($request->all());

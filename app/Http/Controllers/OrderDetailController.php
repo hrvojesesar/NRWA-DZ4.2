@@ -37,7 +37,8 @@ class OrderDetailController extends Controller
             'ProductID' => 'required',
             'UnitPrice' => 'required',
             'Quantity' => 'required',
-            'Discount' => 'required'
+            'Discount' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         OrderDetail::create($request->all());

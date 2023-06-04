@@ -33,7 +33,8 @@ class ShipperController extends Controller
         $request->validate([
             'ShipperID' => 'required',
             'CompanyName' => 'required',
-            'Phone' => 'required'
+            'Phone' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         Shipper::create($request->all());

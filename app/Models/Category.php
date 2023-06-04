@@ -16,6 +16,7 @@ class Category extends Model
         'CategoryName',
         'Description',
         'Picture',
+        'user_id',
     ];
 
     protected $casts = [

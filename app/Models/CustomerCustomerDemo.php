@@ -14,6 +14,7 @@ class CustomerCustomerDemo extends Model
     protected $fillable = [
         'CustomerID',
         'CustomerTypeID',
+        'user_id',
     ];
 
     public $timestamps = false;

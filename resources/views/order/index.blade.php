@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +14,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
@@ -28,7 +29,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
             <li class="nav-item">
@@ -55,6 +56,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">
@@ -63,9 +67,11 @@
             <div class="pull-left">
                 <h2>Orders List</h2>
             </div>
+            @if(auth()->check() && auth()->user()->hasAnyRole(['AdminRole', 'SuperAdminRole']))
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('order.create') }}">Add new Order</a>
             </div>
+            @endif
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -90,7 +96,9 @@
             <th>Ship Region</th>
             <th>Ship PostalCode</th>
             <th>Ship Country</th>
+            @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
             <th width="230px">Action</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -110,6 +118,7 @@
                 <td>{{ $order->ShipRegion }}</td>
                 <td>{{ $order->ShipPostalCode }}</td>
                 <td>{{ $order->ShipCountry }}</td>
+                @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('order.destroy',$order->OrderID) }}" method="Post">
                         <a class="btn btn-primary"href="{{ route('order.edit',$order->OrderID) }}">Edit</a>
@@ -118,6 +127,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                    @endif
             </tr>
         @endforeach
         </tbody>
@@ -125,3 +135,4 @@
 </div>
 </body>
 </html>
+

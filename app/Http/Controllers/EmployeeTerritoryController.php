@@ -34,6 +34,7 @@ class EmployeeTerritoryController extends Controller
         $request->validate([
             'EmployeeID' => 'required',
             'TerritoryID' => 'required',
+            'user_id' => auth()->user()->id,
         ]);
 
         EmployeeTerritory::create($request->all());

@@ -55,6 +55,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('employee_territories.index') }}">Employee Territories</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">Roles</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">
@@ -63,9 +66,11 @@
             <div class="pull-left">
                 <h2>Categories List</h2>
             </div>
+            @if(auth()->check() && auth()->user()->hasAnyRole(['AdminRole', 'SuperAdminRole']))
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('category.create') }}">Add new Category</a>
             </div>
+            @endif
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -80,7 +85,9 @@
             <td>Category Name</td>
             <td>Description</td>
             <td>Picture</td>
+            @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
             <th width="230px">Action</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -90,6 +97,7 @@
                 <td>{{ $category->CategoryName }}</td>
                 <td>{{ $category->Description }}</td>
                 <td>{{ $category->Picture }}</td>
+                @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('category.destroy',$category->CategoryID) }}" method="Post">
                         <a class="btn btn-primary"href="{{ route('category.edit',$category->CategoryID) }}">Edit</a>
@@ -98,6 +106,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                    @endif
             </tr>
         @endforeach
         </tbody>

@@ -23,6 +23,7 @@ class Customer extends Model
         'Country',
         'Phone',
         'Fax',
+        'user_id',
     ];
 
     protected $casts = [

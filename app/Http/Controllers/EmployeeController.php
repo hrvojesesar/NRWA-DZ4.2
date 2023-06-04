@@ -31,6 +31,10 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           'user_id' => auth()->user()->id,
+        ]);
+
         Employee::create($request->all());
 
         return redirect()->route('employee.index');
