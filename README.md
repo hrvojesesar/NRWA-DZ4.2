@@ -7,9 +7,9 @@ If you want to run our Laravel application, you must complete the following step
 5. Run php artisan key:generate
 6. Run php artisan serve
 
-
-Unregistered users - read-role in 2 entites: category and customercustomerdemo
-Registered users - read-role in all entites
-Admin user - read-role and create-role in all entities
-Super Admin user - CRUD-roles in all entites
+<h3>DZ4.2</h3>
+Unregistered users - read-role in 2 entites: category and customercustomerdemo<br/>
+Registered users - read-role in all entites<br/>
+Admin user - read-role and create-role in all entities<br/>
+Super Admin user - CRUD-roles in all entites<br/>
 
