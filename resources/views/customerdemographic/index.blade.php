@@ -91,8 +91,10 @@
         <tbody>
         @foreach ($customerdemographics as $customerdemographic)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $customerdemographic->CustomerTypeID }}</td>
                 <td>{{ $customerdemographic->CustomerDesc }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('customerdemographic.destroy',$customerdemographic->CustomerTypeID) }}" method="Post">

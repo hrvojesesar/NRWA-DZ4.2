@@ -93,8 +93,10 @@
         <tbody>
         @foreach ($employeeTerritories as $employeeTerritory)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $employeeTerritory->EmployeeID }}</td>
                 <td>{{ $employeeTerritory->TerritoryID }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
 

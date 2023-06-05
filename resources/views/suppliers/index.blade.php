@@ -101,6 +101,7 @@
         <tbody>
         @foreach ($suppliers as $supplier)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $supplier->SupplierID }}</td>
                 <td>{{ $supplier->CompanyName }}</td>
                 <td>{{ $supplier->ContactName }}</td>
@@ -113,6 +114,7 @@
                 <td>{{ $supplier->Phone }}</td>
                 <td>{{ $supplier->Fax }}</td>
                 <td>{{ $supplier->HomePage }}</td>
+                    @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('suppliers.destroy',$supplier->SupplierID) }}" method="Post">

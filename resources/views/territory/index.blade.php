@@ -92,9 +92,11 @@
         <tbody>
         @foreach ($territories as $territory)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $territory->TerritoryID }}</td>
                 <td>{{ $territory->TerritoryDescription }}</td>
                 <td>{{ $territory->RegionID }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('territory.destroy',$territory->TerritoryID) }}" method="Post">

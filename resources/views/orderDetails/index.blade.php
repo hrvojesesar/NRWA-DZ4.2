@@ -94,11 +94,13 @@
         <tbody>
         @foreach ($orderDetails as $orderDetail)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $orderDetail->OrderID }}</td>
                 <td>{{ $orderDetail->ProductID }}</td>
                 <td>{{ $orderDetail->UnitPrice }}</td>
                 <td>{{ $orderDetail->Quantity }}</td>
                 <td>{{ $orderDetail->Discount }}</td>
+                    @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('orderDetails.destroy',$orderDetail->OrderID) }}" method="Post">

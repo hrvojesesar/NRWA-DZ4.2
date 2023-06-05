@@ -104,6 +104,7 @@
         <tbody>
         @foreach ($orders as $order)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $order->OrderID }}</td>
                 <td>{{ $order->CustomerID }}</td>
                 <td>{{ $order->EmployeeID }}</td>
@@ -118,6 +119,7 @@
                 <td>{{ $order->ShipRegion }}</td>
                 <td>{{ $order->ShipPostalCode }}</td>
                 <td>{{ $order->ShipCountry }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('order.destroy',$order->OrderID) }}" method="Post">

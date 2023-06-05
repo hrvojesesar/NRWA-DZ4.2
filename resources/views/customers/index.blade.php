@@ -103,6 +103,7 @@
         <tbody>
         @foreach ($customers as $customer)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $customer->CustomerID }}</td>
                 <td>{{ $customer->CompanyName }}</td>
                 <td>{{ $customer->ContactName }}</td>
@@ -114,6 +115,7 @@
                 <td>{{ $customer->Country }}</td>
                 <td>{{ $customer->Phone }}</td>
                 <td>{{ $customer->Fax }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
 

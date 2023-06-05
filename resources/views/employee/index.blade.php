@@ -112,6 +112,7 @@
         <tbody>
         @foreach ($employees as $employee)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $employee->EmployeeID }}</td>
 <td>{{ $employee->LastName }}</td>
 <td>{{ $employee->FirstName }}</td>
@@ -131,6 +132,7 @@
 <td>{{ $employee->ReportsTo }}</td>
 <td>{{ $employee->PhotoPath }}</td>
                 <td>{{ $employee->Salary }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
 

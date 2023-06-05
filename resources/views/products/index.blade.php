@@ -99,6 +99,7 @@
         <tbody>
         @foreach ($products as $product)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $product->ProductID }}</td>
                 <td>{{ $product->ProductName }}</td>
                 <td>{{ $product->SupplierID }}</td>
@@ -109,6 +110,7 @@
                 <td>{{ $product->UnitsOnOrder }}</td>
                 <td>{{ $product->ReorderLevel }}</td>
                 <td>{{ $product->Discontinued }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('products.destroy',$product->ProductID) }}" method="Post">

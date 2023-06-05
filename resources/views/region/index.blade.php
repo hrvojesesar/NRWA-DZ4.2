@@ -91,8 +91,10 @@
         <tbody>
         @foreach ($regions as $region)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $region->RegionID }}</td>
                 <td>{{ $region->RegionDescription }}</td>
+                    @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('region.destroy',$region->RegionID) }}" method="Post">

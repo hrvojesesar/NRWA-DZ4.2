@@ -92,9 +92,11 @@
         <tbody>
         @foreach ($shippers as $shipper)
             <tr>
+                @if(auth()->check() && auth()->user()->hasRole('UserRole'))
                 <td>{{ $shipper->ShipperID }}</td>
                 <td>{{ $shipper->CompanyName }}</td>
                 <td>{{ $shipper->Phone }}</td>
+                @endif
                 @if(auth()->check() && auth()->user()->hasRole('SuperAdminRole'))
                 <td>
                     <form action="{{ route('shipper.destroy',$shipper->ShipperID) }}" method="Post">
